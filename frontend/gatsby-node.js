@@ -1,6 +1,46 @@
 const Promise = require('bluebird')
 const path = require('path')
 
+exports.sourceNodes = ({
+  actions: {createNode},
+  createNodeId,
+  createContentDigest,
+}) => {
+  const Cruise = [
+    {
+      name: 'Trip1',
+      photo: 'cruise-princess.jpg',
+      description: 'A famous cruise line',
+    },
+    {
+      name: 'Trip2',
+      photo: 'cruise-disney.jpg',
+      description: 'Also makes marvel movies',
+      meta: {
+        display_price: {
+          with_tax: {
+            amount: 1000,
+            currency: 'USD',
+            formatted: '$1,000',
+          },
+        },
+      },
+    },
+  ]
+
+  Cruise.forEach(d => {
+    const node = {
+      ...d,
+      id: createNodeId(`Cruise-${d.name}`),
+      internal: {
+        type: 'Cruise',
+        contentDigest: createContentDigest(d),
+      },
+    }
+    createNode(node)
+  })
+}
+
 exports.createPages = ({graphql, actions}) => {
   const {createPage} = actions
 
