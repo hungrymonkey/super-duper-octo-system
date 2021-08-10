@@ -10,10 +10,21 @@ exports.sourceNodes = ({
     {
       name: 'Trip1',
       photo: 'cruise-princess.jpg',
+      description: 'A famous cruise line',
     },
     {
       name: 'Trip2',
       photo: 'cruise-disney.jpg',
+      description: 'Also makes marvel movies',
+      meta: {
+        display_price: {
+          with_tax: {
+            amount: 1000,
+            currency: 'USD',
+            formatted: '$1,000',
+          },
+        },
+      },
     },
   ]
 
