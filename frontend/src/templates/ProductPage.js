@@ -16,14 +16,15 @@ class ProductPageTemplate extends React.PureComponent {
       e => productInfo.edges[0].photo === e.base,
     ).node?.childImageSharp?.gatsbyImageData
     //const image = get(data, 'mainImageHref')
+    const slug = data.name
     const sizes = allFiles.edges.find(
       e => productInfo.edges[0].photo === e.base,
-    ).node?.childImageSharp?.sizes
+    ).node?.childImageSharp?.fluid.sizes
     const product = {
       ...data,
       id: data.id,
       image,
-      //mainImage: data.mainImage,
+      mainImage: image,
       header: data.name,
       meta: data.meta,
       sku: data.sku,
