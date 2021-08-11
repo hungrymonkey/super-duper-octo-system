@@ -2,7 +2,7 @@ import React from 'react'
 import {graphql, useStaticQuery} from 'gatsby'
 import get from 'lodash/get'
 import {Image, Header} from 'semantic-ui-react'
-//  import ProductList from '../components/ProductList' /* unused */
+import ProductList from '../components/ProductList' /* unused */
 import SEO from '../components/SEO'
 import logo from '../images/ill-short-dark.svg'
 import Layout from '../components/Layout'
@@ -38,6 +38,7 @@ const StoreIndex = ({location}) => {
             id
             name
             description
+            photo
             meta {
               display_price {
                 with_tax {
@@ -59,8 +60,20 @@ const StoreIndex = ({location}) => {
     }
   `)
   const siteTitle = get(data, 'site.siteMetadata.title')
-  //  const products = get(data, 'allCruise.edges')/* unused */
-  //  const filterProductsWithoutImages = products.filter(v => v.node.mainImageHref)/* unused */
+  const products = get(data, 'allCruise.edges')
+  const allFiles = get(data, 'allFile.edges')
+  const filterProductsWithoutImages = products
+    .filter(v => v.node.photo)
+    .map(v => {
+      return {
+        node: {
+          ...v.node,
+          mainImage: allFiles.find(e => v.node.photo === e.node.base).node
+            ?.childImageSharp?.fluid,
+        },
+      }
+    })
+  console.log(filterProductsWithoutImages)
   return (
     <Layout location={location}>
       <SEO title={siteTitle} />
@@ -81,7 +94,7 @@ const StoreIndex = ({location}) => {
           <Image src={logo} alt="logo" />
         </Header.Content>
       </Header>
-      {/* <ProductList products={filterProductsWithoutImages} /> */}
+      <ProductList products={filterProductsWithoutImages} />
     </Layout>
   )
 }

@@ -13,7 +13,7 @@ const mapProductsToItems = products =>
       childKey: id,
       image: (
         <Image>
-          <Img fluid={mainImage.childImageSharp.sizes} alt={name} />
+          <Img fluid={mainImage} alt={name} />
         </Image>
       ),
       header: name,
