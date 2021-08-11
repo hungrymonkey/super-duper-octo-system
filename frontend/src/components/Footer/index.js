@@ -50,10 +50,11 @@ const Footer = () => (
             </List>
           </Grid.Column>
           <Grid.Column width={7}>
-            <Header as="h4">Footer Header</Header>
+            <Header as="h4">White Star Cruise Line</Header>
             <p>
-              Extra space for a call to action inside the footer that could help
-              re-engage users.
+              Embark on a magical, memorable White Star Cruise from the sunshine
+              state. From world-class on sea entertainment to a private island
+              paradise, your vacation filled with magic awaits!
             </p>
             <List horizontal style={{display: 'flex'}}>
               <List.Item
