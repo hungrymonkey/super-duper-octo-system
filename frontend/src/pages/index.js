@@ -2,7 +2,7 @@ import React from 'react'
 import {graphql, useStaticQuery} from 'gatsby'
 import get from 'lodash/get'
 import {Image, Header} from 'semantic-ui-react'
-import ProductList from '../components/ProductList'
+//  import ProductList from '../components/ProductList' /* unused */
 import SEO from '../components/SEO'
 import logo from '../images/ill-short-dark.svg'
 import Layout from '../components/Layout'
@@ -15,13 +15,29 @@ const StoreIndex = ({location}) => {
           title
         }
       }
-      allMoltinProduct {
+      allFile(
+        filter: {
+          extension: {regex: "/(jpg)|(png)|(jpeg)/"}
+          relativeDirectory: {in: ""}
+        }
+      ) {
+        edges {
+          node {
+            base
+            childImageSharp {
+              fluid(maxWidth: 800) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+      allCruise {
         edges {
           node {
             id
             name
             description
-            mainImageHref
             meta {
               display_price {
                 with_tax {
@@ -31,22 +47,20 @@ const StoreIndex = ({location}) => {
                 }
               }
             }
-            mainImage {
-              childImageSharp {
-                sizes(maxWidth: 600) {
-                  ...GatsbyImageSharpSizes
-                }
-              }
-            }
+            material
+            max_watt
+            bulb_qty
+            bulb
+            sku
+            finish
           }
         }
       }
     }
   `)
-
   const siteTitle = get(data, 'site.siteMetadata.title')
-  const products = get(data, 'allMoltinProduct.edges')
-  const filterProductsWithoutImages = products.filter(v => v.node.mainImageHref)
+  //  const products = get(data, 'allCruise.edges')/* unused */
+  //  const filterProductsWithoutImages = products.filter(v => v.node.mainImageHref)/* unused */
   return (
     <Layout location={location}>
       <SEO title={siteTitle} />
@@ -67,7 +81,7 @@ const StoreIndex = ({location}) => {
           <Image src={logo} alt="logo" />
         </Header.Content>
       </Header>
-      <ProductList products={filterProductsWithoutImages} />
+      {/* <ProductList products={filterProductsWithoutImages} /> */}
     </Layout>
   )
 }

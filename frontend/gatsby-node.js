@@ -11,6 +11,21 @@ exports.sourceNodes = ({
       name: 'Trip1',
       photo: 'cruise-princess.jpg',
       description: 'A famous cruise line',
+      meta: {
+        display_price: {
+          with_tax: {
+            amount: 800,
+            currency: 'USD',
+            formatted: '$800',
+          },
+        },
+      },
+      material: 'wonder',
+      max_watt: 10000,
+      bulb_qty: 'buffets',
+      bulb: 'Sauna',
+      sku: 'BXD100BLF',
+      finish: 'Juneau, AL',
     },
     {
       name: 'Trip2',
@@ -25,6 +40,12 @@ exports.sourceNodes = ({
           },
         },
       },
+      material: 'fun',
+      max_watt: 5000,
+      bulb_qty: 'buffets',
+      bulb: 'swimming pools',
+      sku: 'BXD100BLK',
+      finish: 'Miami, FL',
     },
   ]
 
@@ -50,7 +71,7 @@ exports.createPages = ({graphql, actions}) => {
       graphql(
         `
           {
-            allMoltinProduct {
+            allCruise {
               edges {
                 node {
                   id
@@ -64,7 +85,7 @@ exports.createPages = ({graphql, actions}) => {
           console.log(result.errors)
           reject(result.errors)
         }
-        result.data.allMoltinProduct.edges.forEach(edge => {
+        result.data.allCruise.edges.forEach(edge => {
           createPage({
             path: `/product/${edge.node.id}/`,
             component: productPageTemplate,
