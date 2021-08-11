@@ -9,11 +9,7 @@ export default ({id, name, meta, sku, mainImage}) => (
   <Item.Group>
     <Item style={{alignItems: 'center'}}>
       <Item.Image size="medium">
-        <Img
-          style={{width: '250px'}}
-          fluid={mainImage.childImageSharp.sizes}
-          alt={name}
-        />
+        <Img style={{width: '250px'}} fluid={mainImage} alt={name} />
       </Item.Image>
       <Item.Content>
         <Item.Header>{name}</Item.Header>
