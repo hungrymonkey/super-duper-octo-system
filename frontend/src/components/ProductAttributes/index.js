@@ -18,23 +18,23 @@ export default ({description, material, max_watt, bulb_qty, finish, bulb}) => (
 
       <Table.Body>
         <Table.Row>
-          <Table.Cell>Material</Table.Cell>
+          <Table.Cell>Theme</Table.Cell>
           <Table.Cell>{material}</Table.Cell>
         </Table.Row>
         <Table.Row>
-          <Table.Cell>Max watt.</Table.Cell>
+          <Table.Cell>Max Capacity</Table.Cell>
           <Table.Cell>{max_watt}</Table.Cell>
         </Table.Row>
         <Table.Row>
-          <Table.Cell>Bulb qty.</Table.Cell>
+          <Table.Cell>Dinner Service</Table.Cell>
           <Table.Cell>{bulb_qty}</Table.Cell>
         </Table.Row>
         <Table.Row>
-          <Table.Cell>Finish</Table.Cell>
+          <Table.Cell>Destination</Table.Cell>
           <Table.Cell>{finish}</Table.Cell>
         </Table.Row>
         <Table.Row>
-          <Table.Cell>Fitting</Table.Cell>
+          <Table.Cell>Amenities</Table.Cell>
           <Table.Cell>{bulb}</Table.Cell>
         </Table.Row>
       </Table.Body>
