@@ -5,11 +5,11 @@ import {Item, Label} from 'semantic-ui-react'
 
 import AddToCart from '../AddToCart'
 
-export default ({id, name, meta, sku, size}) => (
+export default ({id, name, meta, sku, mainImage}) => (
   <Item.Group>
     <Item style={{alignItems: 'center'}}>
       <Item.Image size="medium">
-        <Img style={{width: '250px'}} fluid={size} alt={name} />
+        <Img style={{width: '250px'}} fluid={mainImage} alt={name} />
       </Item.Image>
       <Item.Content>
         <Item.Header>{name}</Item.Header>

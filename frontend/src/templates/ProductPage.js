@@ -14,7 +14,7 @@ class ProductPageTemplate extends React.PureComponent {
     const allFiles = get(this, 'props.data.allFile')
     const image = allFiles.edges.find(
       e => productInfo.edges[0].photo === e.base,
-    ).node?.childImageSharp?.gatsbyImageData
+    ).node?.childImageSharp?.fluid
     //const image = get(data, 'mainImageHref')
     const slug = data.name
     const sizes = allFiles.edges.find(
