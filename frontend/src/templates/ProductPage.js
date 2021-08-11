@@ -12,14 +12,14 @@ class ProductPageTemplate extends React.PureComponent {
     const productInfo = get(this, 'props.data.allCruise')
     const data = productInfo.edges[0].node
     const allFiles = get(this, 'props.data.allFile')
-    const image = allFiles.edges.find(
-      e => productInfo.edges[0].photo === e.base,
-    ).node?.childImageSharp?.fluid
+    console.log(allFiles)
+    console.log(data)
+    const image = allFiles.edges.find(e => data.photo === e.node.base).node
+      ?.childImageSharp?.fluid
     //const image = get(data, 'mainImageHref')
     const slug = data.name
-    const sizes = allFiles.edges.find(
-      e => productInfo.edges[0].photo === e.base,
-    ).node?.childImageSharp?.fluid.sizes
+    const sizes = allFiles.edges.find(e => data.photo === e.node.base).node
+      ?.childImageSharp?.fluid.sizes
     const product = {
       ...data,
       id: data.id,
@@ -52,6 +52,7 @@ export const pageQuery = graphql`
           id
           name
           description
+          photo
           meta {
             display_price {
               with_tax {
