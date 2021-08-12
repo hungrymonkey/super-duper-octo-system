@@ -1,7 +1,32 @@
-# Serverless Deployment
+# AWS S3 Deployment
 
+## Deployment steps
+```bash
+mdbook build
+aws s3 sync book s3://AWS_BUCKET
+```
 
-## AWS S3 Buckets
+## AWS Bucket Policy
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::Bucket-Name/*"
+            ]
+        }
+    ]
+}
+```
+
+## AWS Terraform
 
 Terraform Policy
 
