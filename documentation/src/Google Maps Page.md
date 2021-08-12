@@ -2,7 +2,7 @@
 
 ## Landing Page
 
-![Landing Page](./images/New York.JPG)
+![Landing Page](./images/newyork.JPG)
 
 ## Full Map
 
