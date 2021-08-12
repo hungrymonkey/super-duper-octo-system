@@ -1,6 +1,8 @@
 # Summary
 
 - [Setup Development Environment](./setup-depends.md)
+- [Cruise](./google_maps_page.md)
+  - [API Key Documentation](./api_key_documentation.md)
 - [Frontend](./frontend.md)
   - [Testing](./frontend_testing.md)
   - [Deployment](./frontend_deployment.md)
